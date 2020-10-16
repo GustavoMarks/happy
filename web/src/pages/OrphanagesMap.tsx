@@ -48,7 +48,7 @@ export default function OrphanagesMap() {
           <Popup closeButton={false} minWidth={248} maxWidth={248} className="map-popup" >
             Orfanato
 
-            <Link to="">
+            <Link to="/orphanages/1">
               <FiArrowRight size={20} color="#FFF" />
             </Link>
             
@@ -56,7 +56,7 @@ export default function OrphanagesMap() {
         </Marker>
       </Map>
 
-      <Link to="" className="create-orphanage" >
+      <Link to="/orphanages/create" className="create-orphanage" >
         <FiPlus size={32} color="#FFF" />
       </Link>
 
