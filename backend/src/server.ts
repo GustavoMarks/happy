@@ -13,4 +13,14 @@ app.use(routes);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 app.use(errorHandler)
 
-app.listen(3333);
+const port = normalizaPort(process.env.PORT || '3333');
+function normalizaPort(val: string) {
+  const port = parseInt(val, 10);
+  if (isNaN(port)) return val;
+  if (port >= 0) return port;
+  return false;
+};
+
+app.listen(port, function () {
+  console.log(`[*] API em execução em >> http://localhost:${port}`);
+});
