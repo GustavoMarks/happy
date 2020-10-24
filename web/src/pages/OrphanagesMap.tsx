@@ -32,7 +32,9 @@ export default function OrphanagesMap() {
     <div id="page-map">
       <aside>
         <header>
-          <img src={mapMarker} alt='Happy' />
+          <Link to={"/"}>
+            <img src={mapMarker} alt='Happy' />
+          </Link>
 
           <h2> Escolha um orfanato no mapa </h2>
           <p> Muitas crianças estão esperando a sua visita :) </p>
@@ -45,7 +47,7 @@ export default function OrphanagesMap() {
       </aside>
 
       <Map
-        center={[-3.7766171, -38.4954941]}
+        center={[-3.7547966, -38.5576892]}
         zoom={15}
         style={{ width: '100%', height: '100%' }}
       >

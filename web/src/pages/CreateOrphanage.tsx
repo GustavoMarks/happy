@@ -81,7 +81,7 @@ export default function CreateOrphanage() {
             <legend>Dados</legend>
 
             <Map
-              center={[-27.2092052, -49.6401092]}
+              center={[-3.7547966, -38.5576892]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onClick={handleMapClick}
@@ -115,7 +115,7 @@ export default function CreateOrphanage() {
               <div className="images-container">
                 {previewImages?.map(image => {
                   return (
-                    <img key={image} src={image} alt='uploaded image' />
+                    <img key={image} src={image} alt='uploaded' />
                   )
                 })}
 
