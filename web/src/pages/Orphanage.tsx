@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import Sidebar from '../components/Sidebar';
@@ -18,7 +17,7 @@ interface Orphanage {
   about: string;
   instructions: string;
   opening_hours: string;
-  open_on_weekens: boolean;
+  open_on_weekends: boolean;
   images: { id: number, url: string }[];
 }
 
@@ -26,31 +25,20 @@ interface OrphanagesParams {
   id: string
 }
 
-const temp: Orphanage = {
-  name: 'Lar das meninas',
-  latitude: -27.2092052,
-  longitude: -49.6401092,
-  about: 'Orfanato lar das menians',
-  instructions: 'nehnuma...',
-  opening_hours: 'de 8 as 17h',
-  open_on_weekens: false,
-  images: [{ id: 0, url: '#' }]
-}
-
 export default function Orphanage() {
   const params = useParams<OrphanagesParams>();
-  const [orphanage, setOrphanage] = useState<Orphanage>(temp);
+  const [orphanage, setOrphanage] = useState<Orphanage>();
   const [activedImageIndex, setActivedImageIndex] = useState(0);
 
   useEffect(() => {
+    console.log(params.id);
     api.get(`orphanages/${params.id}`).then(response => {
       setOrphanage(response.data);
-
     });
 
   }, [params.id]);
 
-  if (orphanage!) {
+  if (!orphanage) {
     return <p> Carregando... </p>
   }
 
@@ -108,7 +96,7 @@ export default function Orphanage() {
                 {orphanage.opening_hours}
               </div>
               {
-                orphanage.open_on_weekens ?
+                orphanage.open_on_weekends === true ?
                   <div className="open-on-weekends">
                     <FiInfo size={32} color="#39CC83" />
                     Atendemos <br />
@@ -122,10 +110,6 @@ export default function Orphanage() {
               }
             </div>
 
-            <button type="button" className="contact-button">
-              <FaWhatsapp size={20} color="#FFF" />
-              Entrar em contato
-            </button>
           </div>
         </div>
       </main>

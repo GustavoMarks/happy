@@ -73,16 +73,7 @@ export default {
       abortEarly: false
     })
 
-    const orphanage = orphanagesRepository.create({
-      name,
-      latitude,
-      longitude,
-      about,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-      images
-    });
+    const orphanage = orphanagesRepository.create(data);
   
     await orphanagesRepository.save(orphanage);
   

@@ -48,6 +48,8 @@ export default function CreateOrphanage() {
   }
 
   async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
     const data = new FormData();
 
     const { latitude, longitude } = position;
@@ -64,9 +66,15 @@ export default function CreateOrphanage() {
       data.append('images', image);
     });
 
-    await api.post('orphanages', data);
+    try {
+      await api.post('orphanages', data);
+      alert('Cadastro realizado com sucesso');
 
-    alert('Cadastro realizado com sucesso');
+    } catch (error) {
+      alert('Erro inesperado... Tente novamente mais tarde!');
+      console.log(error);
+
+    }
 
     history.push('/app');
 
