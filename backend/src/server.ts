@@ -6,8 +6,13 @@ import path from 'path';
 import errorHandler from "./errors/handler";
 import cors from "cors";
 
+import "dotenv/config";
+
 const app = express();
-app.use(cors());
+
+const corsOptions = process.env.NODE_ENV == 'dev' ? {} : { origin: process.env.CLIENT_URL }
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(routes);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));

@@ -7,12 +7,13 @@
     "start": "node build/server.js",
     "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "prebuild": "rimraf ./build", 
+    "prebuild": "rimraf ./build",
     "build": "npx tsc",
     "postbuild": "node copyFilesScript.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "multer": "^1.4.2",
