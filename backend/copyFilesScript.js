@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 console.log("[*] Copiando banco de dados sqlite para build...");
-fs.copyFile('./src/database/database.sqlite', './src/database/database.sqlite', (err) => {
+fs.copyFile('./src/database/database.sqlite', './build/database/database.sqlite', (err) => {
   if (err){
     console.log('[!] Erro ao tentar restaurar banco de dados.');
     throw err;
